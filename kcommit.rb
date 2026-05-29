@@ -5,47 +5,41 @@
 class Kcommit < Formula
   desc "Git commit generator using Karma style."
   homepage "https://github.com/BMilliet/kcommit"
-  version "0.1.4"
+  version "0.1.7"
   license "MIT License"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/BMilliet/kcommit/releases/download/0.1.4/kcommit_Darwin_x86_64.tar.gz"
-      sha256 "fe252aee8a9dc8eba4e52dd602338ba436c97b1a96e1c14fce44b9b8761e8deb"
+      url "https://github.com/BMilliet/kcommit/releases/download/0.1.7/kcommit_Darwin_x86_64.tar.gz"
+      sha256 "29a99989af81dd43db35b3a2bd0db944297378b0bcf774acd5125f6f6cc58f36"
 
-      def install
+      define_method(:install) do
         bin.install "kc"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/BMilliet/kcommit/releases/download/0.1.4/kcommit_Darwin_arm64.tar.gz"
-      sha256 "312715b4f0f9f51cd7b795acc95dc0ee9b9f414ee696d24e7854d4aafddac9bd"
+      url "https://github.com/BMilliet/kcommit/releases/download/0.1.7/kcommit_Darwin_arm64.tar.gz"
+      sha256 "26be71950e5288b71107fef6953fcebde7c3cb9843b78912bc03828c04efda47"
 
-      def install
+      define_method(:install) do
         bin.install "kc"
       end
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/BMilliet/kcommit/releases/download/0.1.4/kcommit_Linux_x86_64.tar.gz"
-        sha256 "cb2e2ffef979a070fa378e33b5771b9f8ad1d8a224ae0fe32fa881cdeac3ab41"
-
-        def install
-          bin.install "kc"
-        end
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/BMilliet/kcommit/releases/download/0.1.7/kcommit_Linux_x86_64.tar.gz"
+      sha256 "ff6085071519ae55c827934f499db1a67e178a0ee9e3c6b39d116d82064664ef"
+      define_method(:install) do
+        bin.install "kc"
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/BMilliet/kcommit/releases/download/0.1.4/kcommit_Linux_arm64.tar.gz"
-        sha256 "76a86064300b4a2a4d656213223d0aa564374c4b9b5ff5ca2e6042fa8e1eff0a"
-
-        def install
-          bin.install "kc"
-        end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/BMilliet/kcommit/releases/download/0.1.7/kcommit_Linux_arm64.tar.gz"
+      sha256 "fe6720f4d4cea0cf6ad3a521da98ec5a6cdb1fc019d50dddcb54a1fe09a24e1e"
+      define_method(:install) do
+        bin.install "kc"
       end
     end
   end
